@@ -41,15 +41,30 @@ def bubble_sort_recursive(arr, n = None):
     #     return arr
         
     return bubble_sort_recursive(arr, n - 1)
-        
+
+
+def selection_sort(arr, len_arr):
+    min_pos = 0
+    for i in range(len_arr - 1):
+        min_pos = i
+        for j in range(i + 1, len_arr):
+            if  arr[j] < arr[min_pos]:
+                min_pos = j
+        if min_pos != i:
+            arr[i], arr[min_pos] = arr[min_pos], arr[i]
+    return arr
+
+
 
 def main():
     # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
+    len_list = len(list_unsort)
 
     print(list_unsort)
     # print(bubble_sort(list_unsort))
-    print(bubble_sort_recursive(list_unsort))
+    # print(bubble_sort_recursive(list_unsort))
+    print(selection_sort(list_unsort, len_list))
 
 
 
