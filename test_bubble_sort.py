@@ -27,6 +27,22 @@ def test_duplicates():
     assert bubble_sort([4,2,2, 8,3]) == [2,2,3,4,8]
 
 
+def test_reverse_order():
+    assert bubble_sort([5,4,3,2,1]) == [1,2,3,4,5]
+
+
+def test_large_numbers():
+    assert bubble_sort([10000, 5000, 30000]) == [5000, 10000, 30000]
+
+
+def test_negative_numbers():
+    assert bubble_sort([-3,-1,-4,-2]) == [-4,-3,-2,-1]
+
+
+def test_mixed_numbers():
+    assert bubble_sort([0,-1,2,-3,1]) == [-3,-1,0,1,2]
+
+
 # Run all tests with pytest
 if __name__ == "__main__":
     pytest.main()
