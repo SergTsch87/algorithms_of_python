@@ -1,5 +1,6 @@
 import pytest
 from bubble_sort import bubble_sort   # Import the function (not implemented yet)
+import time
 
 
 # Test case 1: Sorting an empty list should return an empty list
@@ -41,6 +42,15 @@ def test_negative_numbers():
 
 def test_mixed_numbers():
     assert bubble_sort([0,-1,2,-3,1]) == [-3,-1,0,1,2]
+
+
+def test_large_input():
+    arr = list(range(10000, 0, -1))
+    start_time = time.time()
+    sorted_arr = bubble_sort(arr)
+    end_time = time.time()
+    assert sorted_arr == list(range(1,10001))
+    print(f"Excecution time: {end_time - start_time:.4f} seconds")
 
 
 # Run all tests with pytest
