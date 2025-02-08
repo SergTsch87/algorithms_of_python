@@ -21,3 +21,7 @@ def test_sort_two_elements():
 
 def test_sort_three_elements():
     assert recursive_bubble_sort([3,2,1]) == [1,2,3]
+
+
+def test_sort_multiple_elements():
+    assert recursive_bubble_sort([4,3,2,1]) == [1,2,3,4]
