@@ -15,3 +15,42 @@ def test_single_element():
 # Test case 3: A list that is already sorted should remain the same
 def test_sort_two_elements():
     assert recursive_selection_sort([9,4]) == [4,9]
+
+
+def test_sort_three_elements():
+    assert recursive_selection_sort([9,6,4]) == [4,6,9]
+
+
+def test_sort_multiple_elements():
+    assert recursive_selection_sort([9,6,4,3,2]) == [2,3,4,6,9]
+
+
+# Test case 3: A list that is already sorted should remain the same
+def test_sorted_list():
+    assert recursive_selection_sort([1,2,3,4,5]) == [1,2,3,4,5]
+
+
+# Test case 4: A completely unsorted list should be sorted
+def test_unsorted_list():
+    assert recursive_selection_sort([5,3,8,1,2]) == [1,2,3,5,8]
+
+
+# Test case 5: A list with duplicate elements should be sorted correctly
+def test_duplicates():
+    assert recursive_selection_sort([4,2,2, 8,3]) == [2,2,3,4,8]
+
+
+def test_reverse_order():
+    assert recursive_selection_sort([5,4,3,2,1]) == [1,2,3,4,5]
+
+
+def test_large_numbers():
+    assert recursive_selection_sort([10000, 5000, 30000]) == [5000, 10000, 30000]
+
+
+def test_negative_numbers():
+    assert recursive_selection_sort([-3,-1,-4,-2]) == [-4,-3,-2,-1]
+
+
+def test_mixed_numbers():
+    assert recursive_selection_sort([0,-1,2,-3,1]) == [-3,-1,0,1,2]
