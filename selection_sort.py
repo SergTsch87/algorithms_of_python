@@ -10,3 +10,7 @@ def selection_sort(arr):
                 m_index = j  # Знайшли індекс найменшого елменту...
         arr[i], arr[m_index] = arr[m_index], arr[i]   # ...і поміняли його місцями з першим елементом поточної ітерації
     return arr
+
+
+def recursive_selection_sort(arr):
+    return arr
