@@ -27,11 +27,16 @@ def bubble_sort(arr):
 #     return bubble_sort_recursive(arr, n - 1)
 
 
-def recursive_bubble_sort(arr):
-    if len(arr) <= 1:
+def recursive_bubble_sort(arr, n=None):
+    if n is None:
+        n = len(arr)
+
+    if n <= 1:   # Base case: a single-element list is already sorted
+                 # Для уникнення рекурсії на n = 0
         return arr
 
-    if arr[0] > arr[1]:   # Sqap if necessery
-        arr[0], arr[1] = arr[1], arr[0]
+    for i in range(n - 1):   # Bubble the largest number to the end
+        if arr[i] > arr[i + 1]:
+            arr[i], arr[i + 1] = arr[i + 1], arr[i]
 
-    return arr
+    return recursive_bubble_sort(arr, n - 1)   # Recur on the unsorted part
