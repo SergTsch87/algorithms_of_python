@@ -28,4 +28,10 @@ def bubble_sort(arr):
 
 
 def recursive_bubble_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    if arr[0] > arr[1]:   # Sqap if necessery
+        arr[0], arr[1] = arr[1], arr[0]
+
     return arr
