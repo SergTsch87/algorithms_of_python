@@ -1,7 +1,12 @@
 def selection_sort(arr):
-    if len(arr) <= 1:
+    n = len(arr)
+    if n <= 1:
         return arr
-        
-    if arr[0] > arr[1]:
-        arr[0], arr[1] = arr[1], arr[0]
+
+    for i in range(n - 1):
+        m_index = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[m_index]:
+                m_index = j  # Знайшли індекс найменшого елменту...
+        arr[i], arr[m_index] = arr[m_index], arr[i]   # ...і поміняли його місцями з першим елементом поточної ітерації
     return arr
