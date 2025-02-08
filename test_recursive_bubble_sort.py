@@ -1,5 +1,5 @@
 import pytest
-from bubble_sort import bubble_sort   # Import the function (not implemented yet)
+from bubble_sort import recursive_bubble_sort   # Import the function (not implemented yet)
 import time
 
 

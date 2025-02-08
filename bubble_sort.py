@@ -27,5 +27,5 @@ def bubble_sort(arr):
 #     return bubble_sort_recursive(arr, n - 1)
 
 
-# def recursive_bubble_sort(arr):
-#     return arr
+def recursive_bubble_sort(arr):
+    return arr
