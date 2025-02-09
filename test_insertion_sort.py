@@ -21,3 +21,12 @@ def test_sort_single_element():
 def test_sort_two_elements():
     assert insertion_sort([2,1]) == [1,2]
     # Now we need logic to sort two elements.
+
+
+def test_sort_three_elements():
+    assert insertion_sort([3,2,1]) == [1,2,3]
+
+
+# Test case 3: A list that is already sorted should remain the same
+def test_sorted_list():
+    assert insertion_sort([1,2,3,4,5]) == [1,2,3,4,5]
