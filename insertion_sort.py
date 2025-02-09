@@ -6,9 +6,6 @@ def insertion_sort(arr):
     for i in range(1, n):
         key_ind = i
         for j in range(key_ind, 0, -1):
-            # print(f'key_ind == {key_ind}')
-            # print(f'j == {j}')
-            # print(f'j - 1 == {j - 1}')
             if arr[j - 1] > arr[j]:
                 arr[j - 1], arr[j] = arr[j], arr[j - 1]
     
