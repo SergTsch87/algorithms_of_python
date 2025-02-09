@@ -15,3 +15,7 @@ def test_single_element():
 def test_sort_two_elements():
     assert recursive_insertion_sort([2,1]) == [1,2]
     # Now we need logic to sort two elements.
+
+
+def test_sort_three_elements():
+    assert recursive_insertion_sort([3,2,1]) == [1,2,3]

@@ -27,20 +27,33 @@ def insertion_sort(arr):
     return arr
 
 
-def recursive_insertion_sort(arr):
-    if len(arr) <= 1:
+def recursive_insertion_sort(arr, n=None, step=1):
+    if n is None:
+        n = len(arr)
+
+    if step >= n - 1:
         return arr
     
-    if arr[0] > arr[1]:
-        arr[0], arr[1] = arr[1], arr[0]
-    return arr
+    key = arr[step]
+    j = step - 1
+
+    while j >= 0 and key < arr[j]:
+        arr[j + 1] = arr[j]
+        j -= 1
+
+    arr[j + 1] = key
+    # step += 1
+    
+    # if arr[0] > arr[1]:
+    #     arr[0], arr[1] = arr[1], arr[0]
+    return recursive_insertion_sort(arr, n - 1, step + 1)
 
 
-# def main():
-#     arr = [9,5,1,4,3]
-#     arr_new = insertion_sort(arr)
-#     print(arr_new)
+def main():
+    arr = [9,5,1,4,3]
+    arr_new = recursive_insertion_sort(arr)
+    print(arr_new)
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
