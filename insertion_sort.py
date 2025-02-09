@@ -2,13 +2,24 @@ def insertion_sort(arr):
     n = len(arr)
     if n <= 1:
         return arr
-    
-    # if arr[0] > arr[1]:
-    #     arr[0], arr[1] = arr[1], arr[0]
 
-    key_ind = 0
-    for i in range(1, n + 1):
-        if arr[i] > arr[key_ind]:
-            arr[i], arr[key_ind] = arr[key_ind], arr[i]
+    for i in range(1, n):
+        key_ind = i
+        for j in range(key_ind, 0, -1):
+            # print(f'key_ind == {key_ind}')
+            # print(f'j == {j}')
+            # print(f'j - 1 == {j - 1}')
+            if arr[j - 1] > arr[j]:
+                arr[j - 1], arr[j] = arr[j], arr[j - 1]
     
     return arr
+
+
+# def main():
+#     arr = [9,5,1,4,3]
+#     arr_new = insertion_sort(arr)
+#     print(arr_new)
+
+
+# if __name__ == '__main__':
+#     main()
