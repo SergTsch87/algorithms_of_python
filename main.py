@@ -82,12 +82,29 @@ def get_max_min_arr(arr: list[int]) -> list[int]:
     return [min_arr, max_arr]
 
 
+# 3) Reverse an Array (Without Using [::-1])
+# Task: Implement a function that reverses a list in place using a loop.
+# Goal: Work with indices and swapping values.
+def get_reverse_an_arr(arr: list[int]) -> list[int]:
+    temp_arr = []
+    # for num in arr:
+    #     temp_arr = [num] + temp_arr
+    for num in range(len(arr) - 1, -1, -1):
+        temp_arr.append(arr[num])
+
+    return temp_arr
+
+
 def main():
     my_arr = [2,6,4,3]
     # sum_items = get_sum_list(my_arr)
-    min_arr, max_arr = get_max_min_arr(my_arr)
-    # print(f'sum_items == {sum_items}')
-    print(f'min_arr == {min_arr}\nmax_arr == {max_arr}')
+    # min_arr, max_arr = get_max_min_arr(my_arr)
+    # # print(f'sum_items == {sum_items}')
+    # print(f'min_arr == {min_arr}\nmax_arr == {max_arr}')
+
+    arr = get_reverse_an_arr(my_arr)
+    print(f'arr == {arr}')
+
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
     # len_list = len(list_unsort)
