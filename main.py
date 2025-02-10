@@ -129,11 +129,14 @@ def get_prefix_sum(arr: list[int]) -> list[int]:
     if not arr:
         raise ValueError('Array cannot be empty')
     
-    sum = 0
+    current_sum = 0
     arr_new = []
-    for i in range(len(arr)):
-        sum += arr[i]
-        arr_new.append(sum)
+    for num in arr:
+        current_sum += num
+        arr_new.append(current_sum)
+    # for i in range(len(arr)):
+    #     current_sum += arr[i]
+    #     arr_new.append(current_sum)
 
     return arr_new
 
