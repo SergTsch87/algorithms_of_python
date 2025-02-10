@@ -122,6 +122,22 @@ def get_count_elem(arr: list[int], find_num: int) -> list[int]:
     return sum(1 for num in arr if num == find_num)
 
 
+# 5) Prefix Sum of an Array
+# Task: Given an array, return a new array where each element at index i is the sum of all elements from 0 to i.
+# Goal: Track cumulative changes across iterations.
+def get_prefix_sum(arr: list[int]) -> list[int]:
+    if not arr:
+        raise ValueError('Array cannot be empty')
+    
+    sum = 0
+    arr_new = []
+    for i in range(len(arr)):
+        sum += arr[i]
+        arr_new.append(sum)
+
+    return arr_new
+
+
 def main():
     my_arr = [2,6,4,3,5,3]
     # sum_items = get_sum_list(my_arr)
@@ -132,9 +148,12 @@ def main():
     # arr = get_reverse_an_arr(my_arr)
     # print(f'arr == {arr}')
 
-    find_num = 3
-    count = get_count_elem(my_arr, find_num)
-    print(f'count == {count}')
+    # find_num = 3
+    # count = get_count_elem(my_arr, find_num)
+    # print(f'count == {count}')
+
+    arr_new = get_prefix_sum(my_arr)
+    print(f'arr_new == {arr_new}')
 
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
@@ -144,7 +163,6 @@ def main():
     # # print(bubble_sort(list_unsort))
     # # print(bubble_sort_recursive(list_unsort))
     # print(selection_sort(list_unsort, len_list))
-
 
 
 if __name__ == '__main__':
