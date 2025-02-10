@@ -110,12 +110,16 @@ def get_count_elem(arr: list[int], find_num: int) -> list[int]:
     if not arr:
         raise ValueError("Array cannot be empty")
     
-    count = 0
-    for num in arr:
-        if num == find_num:
-            count += 1
+    # count = 0
+    # for num in arr:
+    #     if num == find_num:
+    #         count += 1
 
-    return count
+    # return count
+
+    # Pythonic ways:
+    # return arr.count(find_num)
+    return sum(1 for num in arr if num == find_num)
 
 
 def main():
