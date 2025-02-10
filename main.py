@@ -2,6 +2,7 @@
 
 # import random as rnd
 # import math
+from itertools import accumulate
 
 
 # Iterative version
@@ -129,16 +130,7 @@ def get_prefix_sum(arr: list[int]) -> list[int]:
     if not arr:
         raise ValueError('Array cannot be empty')
     
-    current_sum = 0
-    arr_new = []
-    for num in arr:
-        current_sum += num
-        arr_new.append(current_sum)
-    # for i in range(len(arr)):
-    #     current_sum += arr[i]
-    #     arr_new.append(current_sum)
-
-    return arr_new
+    return list(accumulate(arr))
 
 
 def main():
