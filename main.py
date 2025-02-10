@@ -55,16 +55,29 @@ def selection_sort(arr, len_arr):
     return arr
 
 
+# 1) Sum of Array Elements
+# Task: Write a function that takes a list of numbers and returns the sum of all elements.
+# Goal: Understand simple iteration over an array.
+def get_sum_list(my_list: int) -> int:
+    sum_nums = 0
+    for _ in my_list:
+        sum_nums += _
+    return sum_nums
+    # return sum(my_list)
+
 
 def main():
-    # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
-    list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
-    len_list = len(list_unsort)
+    my_arr = [2,6,4,3]
+    sum_items = get_sum_list(my_arr)
+    print(f'sum_items == {sum_items}')
+    # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
+    # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
+    # len_list = len(list_unsort)
 
-    print(list_unsort)
-    # print(bubble_sort(list_unsort))
-    # print(bubble_sort_recursive(list_unsort))
-    print(selection_sort(list_unsort, len_list))
+    # print(list_unsort)
+    # # print(bubble_sort(list_unsort))
+    # # print(bubble_sort_recursive(list_unsort))
+    # print(selection_sort(list_unsort, len_list))
 
 
 
