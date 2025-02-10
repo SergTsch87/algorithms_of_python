@@ -86,13 +86,21 @@ def get_max_min_arr(arr: list[int]) -> list[int]:
 # Task: Implement a function that reverses a list in place using a loop.
 # Goal: Work with indices and swapping values.
 def get_reverse_an_arr(arr: list[int]) -> list[int]:
-    temp_arr = []
-    # for num in arr:
-    #     temp_arr = [num] + temp_arr
-    for num in range(len(arr) - 1, -1, -1):
-        temp_arr.append(arr[num])
+    left, right = 0, len(arr) - 1
+    while left < right:
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1
+    
+    return arr
+    
+    # temp_arr = []
+    # # for num in arr:
+    # #     temp_arr = [num] + temp_arr
+    # for num in range(len(arr) - 1, -1, -1):
+    #     temp_arr.append(arr[num])
 
-    return temp_arr
+    # return temp_arr
 
 
 def main():
