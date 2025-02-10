@@ -103,15 +103,34 @@ def get_reverse_an_arr(arr: list[int]) -> list[int]:
     # return temp_arr
 
 
+# 4) Count Occurrences of an Element
+# Task: Given a list and a target value, return the number of times it appears.
+# Goal: Use conditional checks within iterations
+def get_count_elem(arr: list[int], find_num: int) -> list[int]:
+    if not arr:
+        raise ValueError("Array cannot be empty")
+    
+    count = 0
+    for num in arr:
+        if num == find_num:
+            count += 1
+
+    return count
+
+
 def main():
-    my_arr = [2,6,4,3]
+    my_arr = [2,6,4,3,5,3]
     # sum_items = get_sum_list(my_arr)
     # min_arr, max_arr = get_max_min_arr(my_arr)
     # # print(f'sum_items == {sum_items}')
     # print(f'min_arr == {min_arr}\nmax_arr == {max_arr}')
 
-    arr = get_reverse_an_arr(my_arr)
-    print(f'arr == {arr}')
+    # arr = get_reverse_an_arr(my_arr)
+    # print(f'arr == {arr}')
+
+    find_num = 3
+    count = get_count_elem(my_arr, find_num)
+    print(f'count == {count}')
 
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
