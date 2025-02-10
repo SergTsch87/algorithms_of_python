@@ -66,10 +66,37 @@ def get_sum_list(my_list: int) -> int:
     # return sum(my_list)
 
 
+# 2) Find the Maximum and Minimum in an Array
+# Task: Given a list, return the smallest and largest number.
+# Goal: Track and update variables inside a loop.
+def get_max_min_arr(arr: int) -> int:
+    min = arr[0]
+    max = arr[0]
+    for _ in arr:
+        if max < _:
+            max = _
+        if min > _:
+            min = _
+
+    # max_pos = 0
+    # min_pos = 0
+    # len_arr = len(arr)
+    # for _ in range(1, len_arr):
+    #     if arr[max_pos] < arr[_]:
+    #         max_pos = _
+    #     if arr[min_pos] > arr[_]:
+    #         min_pos = _
+
+    # return [arr[min_pos], arr[max_pos]]
+    return [min, max]
+
+
 def main():
     my_arr = [2,6,4,3]
-    sum_items = get_sum_list(my_arr)
-    print(f'sum_items == {sum_items}')
+    # sum_items = get_sum_list(my_arr)
+    min, max = get_max_min_arr(my_arr)
+    # print(f'sum_items == {sum_items}')
+    print(f'min == {min}\nmax == {max}')
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
     # len_list = len(list_unsort)
