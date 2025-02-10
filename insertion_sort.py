@@ -31,17 +31,23 @@ def recursive_insertion_sort(arr, n=None, step=1):
     if n is None:
         n = len(arr)
 
+    print(f'\nBegin of new iter\nstep == {step}, n == {n}\n')
     if step >= n - 1:
+        print(f'step == {step}, n == {n}\nNext code: return arr')
+        print(f'arr == {arr}\n')
         return arr
     
     key = arr[step]
     j = step - 1
+    print(f'key == {key}, step == {step}, arr[step] == {arr[step]}, j == {j}')
 
     while j >= 0 and key < arr[j]:
+        print(f'\nInside While loop\nj == {j}, key == {key}, arr[j] == {arr[j]}, arr[j + 1] == {arr[j + 1]}\n')
         arr[j + 1] = arr[j]
         j -= 1
 
     arr[j + 1] = key
+    print(f'\nkey == {key}, j + 1 == {j + 1}, arr[j + 1] == {arr[j + 1]}\nThe End of iter')
     # step += 1
     
     # if arr[0] > arr[1]:
