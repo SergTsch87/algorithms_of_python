@@ -180,7 +180,7 @@ def find_ind_of_target_elem(arr, num):
 # 8) Find Duplicates in an Array
 # Task: Return a list of elements that appear more than once.
 # Goal: Use nested loops or a dictionary for frequency counting.
-def find_duplicates_in_arr(arr):
+def find_duplicates_in_arr(arr: list[int]) -> list[int]:
     # # 1) with nested loops:
     # new_list = []
     # count = 0
@@ -216,16 +216,36 @@ def find_duplicates_in_arr(arr):
 
 #     3) Optimal Approach: Single Pass Dictionary (O(n))
 # The best way to find duplicates is using a single pass dictionary to count occurrences.
+    if not arr:
+        return arr
+    
     freq_count = {}
     duplicates = set()
 
     for val in arr:
         if val in freq_count:
-            duplicates.add(val)   # Onle add if already seen
+            duplicates.add(val)   # Only add if already seen
         else:
             freq_count[val] = 1   # Mark as seen
     
     return list(duplicates)
+
+
+# 9) Move All Zeros to the End
+# Task: Given [0, 1, 0, 3, 12], return [1, 3, 12, 0, 0].
+# Goal: Differentiate between keeping track of indices and values while modifying an array.
+def move_all_zeros_to_the_end(arr):
+    # 1) first way
+    new_list = []
+    count = 0
+    for num in arr:
+        if num == 0:
+            count += 1
+        else:
+            new_list.append(num)
+    
+    new_list += [0 for _ in range(count)]
+    return new_list
 
 
 def main():
@@ -253,10 +273,13 @@ def main():
     # print(f'arr_new == {arr_new}')
 
     # my_arr = [2,6,4,3,5,3]
-    my_arr = [6,7,3,6,4,2,2,4,1,5,8,3,5,3,34,6,2]
-    arr_new = find_duplicates_in_arr(my_arr)
-    print(f'arr_new == {arr_new}')
+    # my_arr = [6,7,3,6,4,2,2,4,1,5,8,3,5,3,34,6,2]
+    # arr_new = find_duplicates_in_arr(my_arr)
+    # print(f'arr_new == {arr_new}')
 
+    my_arr = [0, 1, 0, 3, 12]
+    arr_new = move_all_zeros_to_the_end(my_arr)
+    print(f'arr_new == {arr_new}')
     
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
