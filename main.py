@@ -133,6 +133,21 @@ def get_prefix_sum(arr: list[int]) -> list[int]:
     return list(accumulate(arr))
 
 
+# 6) Shift Elements in an Array
+# Task: Given an array, shift all elements to the right by one position, with the last element moving to the first position.
+# Goal: Manipulate indices and track changes.
+def shift_elems_in_arr(arr: list[int]) -> list[int]:
+    arr_0 = arr[len(arr) - 1]
+    for i in range(len(arr) - 1, 0, -1):
+        # print(f'i == {i}, arr[i] == {arr[i]}, arr[i-1] == {arr[i-1]}')
+        arr[i] = arr[i - 1]
+
+    arr[0] = arr_0
+    
+    return arr
+
+
+
 def main():
     my_arr = [2,6,4,3,5,3]
     # sum_items = get_sum_list(my_arr)
@@ -147,9 +162,12 @@ def main():
     # count = get_count_elem(my_arr, find_num)
     # print(f'count == {count}')
 
-    arr_new = get_prefix_sum(my_arr)
-    print(f'arr_new == {arr_new}')
+    # arr_new = get_prefix_sum(my_arr)
+    # print(f'arr_new == {arr_new}')
 
+    arr_new = shift_elems_in_arr(my_arr)
+    print(f'arr_new == {arr_new}')
+    
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
     # len_list = len(list_unsort)
