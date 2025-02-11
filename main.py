@@ -140,15 +140,16 @@ def shift_elems_in_arr(arr: list[int]) -> list[int]:
     if not arr:
         return arr
     
-    last_elem = arr[- 1]
-    
-    for i in range(len(arr) - 1, 0, -1):
-        # print(f'i == {i}, arr[i] == {arr[i]}, arr[i-1] == {arr[i-1]}')
-        arr[i] = arr[i - 1]
+    # last_elem = arr[- 1]
 
-    arr[0] = last_elem
+    # for i in range(len(arr) - 1, 0, -1):
+    #     # print(f'i == {i}, arr[i] == {arr[i]}, arr[i-1] == {arr[i-1]}')
+    #     arr[i] = arr[i - 1]
+
+    # arr[0] = last_elem
     
-    return arr
+    # return arr
+    return [arr[-1]] + arr[:-1]  # more Pythonic way to perform the shift is by using slicing
 
 
 
