@@ -137,12 +137,16 @@ def get_prefix_sum(arr: list[int]) -> list[int]:
 # Task: Given an array, shift all elements to the right by one position, with the last element moving to the first position.
 # Goal: Manipulate indices and track changes.
 def shift_elems_in_arr(arr: list[int]) -> list[int]:
-    arr_0 = arr[len(arr) - 1]
+    if not arr:
+        return arr
+    
+    last_elem = arr[- 1]
+    
     for i in range(len(arr) - 1, 0, -1):
         # print(f'i == {i}, arr[i] == {arr[i]}, arr[i-1] == {arr[i-1]}')
         arr[i] = arr[i - 1]
 
-    arr[0] = arr_0
+    arr[0] = last_elem
     
     return arr
 
