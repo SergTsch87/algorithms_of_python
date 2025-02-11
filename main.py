@@ -180,11 +180,24 @@ def find_ind_of_target_elem(arr, num):
 # 8) Find Duplicates in an Array
 # Task: Return a list of elements that appear more than once.
 # Goal: Use nested loops or a dictionary for frequency counting.
-
+def find_duplicates_in_arr(arr):
+    new_list = []
+    count = 0
+    temp_elem = 0
+    for i, val in enumerate(arr):
+        if val not in new_list:
+            temp_elem = val
+            count += 1
+            for j, item in enumerate(arr):
+                if j > i:
+                    if item == temp_elem:
+                        new_list.append(temp_elem)
+                        break
+    return new_list
 
 
 def main():
-    my_arr = [2,6,4,3,5,3]
+    # my_arr = [2,6,4,3,5,3]
     # sum_items = get_sum_list(my_arr)
     # min_arr, max_arr = get_max_min_arr(my_arr)
     # # print(f'sum_items == {sum_items}')
@@ -203,9 +216,15 @@ def main():
     # arr_new = shift_elems_in_arr(my_arr)
     # print(f'arr_new == {arr_new}')
 
-    num = 2
-    arr_new = find_ind_of_target_elem(my_arr, num)
+    # num = 2
+    # arr_new = find_ind_of_target_elem(my_arr, num)
+    # print(f'arr_new == {arr_new}')
+
+    # my_arr = [2,6,4,3,5,3]
+    my_arr = [6,7,3,6,4,2,2,4,1,5,8,3,5,3,34,6,2]
+    arr_new = find_duplicates_in_arr(my_arr)
     print(f'arr_new == {arr_new}')
+
     
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
