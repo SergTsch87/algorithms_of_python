@@ -152,6 +152,16 @@ def shift_elems_in_arr(arr: list[int]) -> list[int]:
     return [arr[-1]] + arr[:-1]  # more Pythonic way to perform the shift is by using slicing
 
 
+# 7) Find the Index of a Target Element
+# Task: Given a list and a target, return the index of the first occurrence (or -1 if not found).
+# Goal: Distinguish between index-based and value-based iteration.
+def find_ind_of_target_elem(arr, num):
+    # index-based iteration
+    for i in range(len(arr)):
+        if arr[i] == num:
+            return i
+    return -1
+
 
 def main():
     my_arr = [2,6,4,3,5,3]
