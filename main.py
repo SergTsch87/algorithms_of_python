@@ -235,17 +235,25 @@ def find_duplicates_in_arr(arr: list[int]) -> list[int]:
 # Task: Given [0, 1, 0, 3, 12], return [1, 3, 12, 0, 0].
 # Goal: Differentiate between keeping track of indices and values while modifying an array.
 def move_all_zeros_to_the_end(arr):
-    # 1) first way
-    new_list = []
-    count = 0
-    for num in arr:
-        if num == 0:
-            count += 1
-        else:
-            new_list.append(num)
+    # # 1) first way
+    # new_list = []
+    # count = 0
+    # for num in arr:
+    #     if num == 0:
+    #         count += 1
+    #     else:
+    #         new_list.append(num)
     
-    new_list += [0 for _ in range(count)]
-    return new_list
+    # new_list += [0 for _ in range(count)]
+    # return new_list
+
+    # 2) second way
+    for ind, num in enumerate(arr):
+        if num == 0:
+            del arr[ind]
+            arr.append(0)
+        
+    return arr
 
 
 def main():
