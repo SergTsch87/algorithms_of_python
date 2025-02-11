@@ -161,12 +161,26 @@ def find_ind_of_target_elem(arr, num):
     #     if arr[i] == num:
     #         return i
 
-    # value-based iteration
-    for item in arr:
-        if item == num:
-            return item
+    # # value-based iteration
+    # index = 0
+    # for item in arr:
+    #     if item == num:
+    #         return index
+    #     index += 1
 
-    return -1
+    # for index, val in enumerate(arr):
+    #     if val == num:
+    #         return index
+
+    # return -1
+
+    return arr.index(num) if num in arr else -1  # one-liner using .index() (but it raises an exception if num is not found)
+
+
+# 8) Find Duplicates in an Array
+# Task: Return a list of elements that appear more than once.
+# Goal: Use nested loops or a dictionary for frequency counting.
+
 
 
 def main():
@@ -189,7 +203,7 @@ def main():
     # arr_new = shift_elems_in_arr(my_arr)
     # print(f'arr_new == {arr_new}')
 
-    num = 3
+    num = 2
     arr_new = find_ind_of_target_elem(my_arr, num)
     print(f'arr_new == {arr_new}')
     
