@@ -181,6 +181,7 @@ def find_ind_of_target_elem(arr, num):
 # Task: Return a list of elements that appear more than once.
 # Goal: Use nested loops or a dictionary for frequency counting.
 def find_duplicates_in_arr(arr):
+    # 1) with nested loops:
     new_list = []
     count = 0
     temp_elem = 0
@@ -194,6 +195,27 @@ def find_duplicates_in_arr(arr):
                         new_list.append(temp_elem)
                         break
     return new_list
+
+    # # 2) with dictionary for frequency counting:
+    # dict_for_freq_count = {}
+    # new_list = []
+    # # count = 0
+    # # temp_elem = 0
+    # for i, val in enumerate(arr):
+    #     if val not in dict_for_freq_count.values():
+    #         dict_for_freq_count[val] = 1
+    #         # temp_elem = val
+    #         # count += 1
+    #         for j, item in enumerate(arr):
+    #             if j > i:
+    #                 if item in dict_for_freq_count.keys():
+    #                     new_list.append(val)
+    #                     break
+    # return new_list
+    # [6, 3, 4, 2, 5]
+
+    # for key, value in dict_for_freq_count.items():
+    #     pass
 
 
 def main():
