@@ -156,10 +156,16 @@ def shift_elems_in_arr(arr: list[int]) -> list[int]:
 # Task: Given a list and a target, return the index of the first occurrence (or -1 if not found).
 # Goal: Distinguish between index-based and value-based iteration.
 def find_ind_of_target_elem(arr, num):
-    # index-based iteration
-    for i in range(len(arr)):
-        if arr[i] == num:
-            return i
+    # # index-based iteration
+    # for i in range(len(arr)):
+    #     if arr[i] == num:
+    #         return i
+
+    # value-based iteration
+    for item in arr:
+        if item == num:
+            return item
+
     return -1
 
 
@@ -180,7 +186,11 @@ def main():
     # arr_new = get_prefix_sum(my_arr)
     # print(f'arr_new == {arr_new}')
 
-    arr_new = shift_elems_in_arr(my_arr)
+    # arr_new = shift_elems_in_arr(my_arr)
+    # print(f'arr_new == {arr_new}')
+
+    num = 3
+    arr_new = find_ind_of_target_elem(my_arr, num)
     print(f'arr_new == {arr_new}')
     
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
