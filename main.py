@@ -274,7 +274,7 @@ def move_all_zeros_to_the_end(arr):
 # 10) Two Pointers Technique: Find Pair with Target Sum
 # Task: Given a sorted list and a target sum, return the indices of two numbers that add up to the target.
 # Goal: Use two different indices moving in opposite directions.
-def find_pair_with_target_sum(sorted_list: list[int], target_sum: int) -> list[int]:
+def find_pair_with_target_sum(sorted_list: list[int], target_sum: int) -> tuple[int, int] | tuple[None, None]:
     # # 1) 1st way: Bad, ineficient
     # # Issue 2:
     # # Inefficient Tracking of "Bad Numbers"
@@ -299,19 +299,35 @@ def find_pair_with_target_sum(sorted_list: list[int], target_sum: int) -> list[i
     # return None, None
 
     # 2) 2nd way
-    # i = 0
-    find_second_num = -1
-    tmp_val = 0
-    for ind, val in enumerate(sorted_list):
-        if (target_sum - val) in sorted_list and tmp_val == 0:
-            i = ind
-            find_second_num = target_sum - val
-            tmp_val += 1
-        elif val == find_second_num:
-            j = ind
-            return i, j
+    # find_second_num = -1
+    # tmp_val = 0
+    # for ind, val in enumerate(sorted_list):
+    #     if (target_sum - val) in sorted_list and tmp_val == 0:
+    #         i = ind
+    #         find_second_num = target_sum - val
+    #         tmp_val += 1
+    #     elif val == find_second_num:
+    #         j = ind
+    #         return i, j
     
-    return None, None
+    # return None, None
+
+    # 3) 3d way
+    left, right = 0, len(sorted_list) - 1
+
+    while left < right:
+        current_sum = sorted_list[left] + sorted_list[right]
+
+        if current_sum == target_sum:
+            return left, right  # Found the pair
+        
+        elif current_sum < target_sum:
+            left += 1  # Move left pointer to increase the sum
+
+        else:
+            right -= 1  # Move right pointer to decrease the sum
+
+    return None, None  # No valid pair found
 
 
 def main():
