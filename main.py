@@ -255,8 +255,18 @@ def move_all_zeros_to_the_end(arr):
         
     # # return arr
 
-    # 3) third way
-    return [num for num in arr if num != 0] + [0] * arr.count(0)
+    # # 3) third way
+    # return [num for num in arr if num != 0] + [0] * arr.count(0)
+
+    # 4) forth way
+    non_zero_index = 0
+
+    for i in range(len(arr)):
+        if arr[i] != 0:
+            arr[i], arr[non_zero_index] = arr[non_zero_index], arr[i]
+            non_zero_index += 1
+
+    return arr
 
 
 def main():
@@ -288,7 +298,8 @@ def main():
     # arr_new = find_duplicates_in_arr(my_arr)
     # print(f'arr_new == {arr_new}')
 
-    my_arr = [0, 1, 0, 3, 12]
+    # my_arr = [0, 1, 0, 3, 12]
+    my_arr = [1,3,0,5,0,0,8]
     arr_new = move_all_zeros_to_the_end(my_arr)
     print(f'arr_new == {arr_new}')
     
