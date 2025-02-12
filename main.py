@@ -312,22 +312,35 @@ def find_pair_with_target_sum(sorted_list: list[int], target_sum: int) -> tuple[
     
     # return None, None
 
-    # 3) 3d way
-    left, right = 0, len(sorted_list) - 1
+    # # 3) 3d way
+    # left, right = 0, len(sorted_list) - 1
 
-    while left < right:
-        current_sum = sorted_list[left] + sorted_list[right]
+    # while left < right:
+    #     current_sum = sorted_list[left] + sorted_list[right]
 
-        if current_sum == target_sum:
-            return left, right  # Found the pair
+    #     if current_sum == target_sum:
+    #         return left, right  # Found the pair
         
-        elif current_sum < target_sum:
-            left += 1  # Move left pointer to increase the sum
+    #     elif current_sum < target_sum:
+    #         left += 1  # Move left pointer to increase the sum
 
-        else:
-            right -= 1  # Move right pointer to decrease the sum
+    #     else:
+    #         right -= 1  # Move right pointer to decrease the sum
 
-    return None, None  # No valid pair found
+    # return None, None  # No valid pair found
+
+
+    # 4) 4th way
+    seen = {}  # Dictionary to store {value: index}
+
+    for i, val in enumerate(sorted_list):
+        complement = target_sum - val
+        if complement in seen:
+            return seen[complement], i  # Found the pair
+        
+        seen[val] = i  # Store index of the current number
+
+    return None  # No valid pair found
 
 
 def main():
