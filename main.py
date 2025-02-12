@@ -247,13 +247,16 @@ def move_all_zeros_to_the_end(arr):
     # new_list += [0 for _ in range(count)]
     # return new_list
 
-    # 2) second way
-    for ind, num in enumerate(arr):
-        if num == 0:
-            del arr[ind]
-            arr.append(0)
+    # # # 2) second way
+    # # for ind, num in enumerate(arr):
+    # #     if num == 0:
+    # #         del arr[ind]
+    # #         arr.append(0)
         
-    return arr
+    # # return arr
+
+    # 3) third way
+    return [num for num in arr if num != 0] + [0] * arr.count(0)
 
 
 def main():
