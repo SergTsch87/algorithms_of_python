@@ -259,6 +259,8 @@ def move_all_zeros_to_the_end(arr):
     # return [num for num in arr if num != 0] + [0] * arr.count(0)
 
     # 4) forth way
+    #     Best Approach: Two Pointers (In-Place, O(n))
+    #     Efficient and Modifies in Place Without Extra Memory
     non_zero_index = 0
 
     for i in range(len(arr)):
@@ -267,6 +269,29 @@ def move_all_zeros_to_the_end(arr):
             non_zero_index += 1
 
     return arr
+
+
+# 10) Two Pointers Technique: Find Pair with Target Sum
+# Task: Given a sorted list and a target sum, return the indices of two numbers that add up to the target.
+# Goal: Use two different indices moving in opposite directions.
+def find_pair_with_target_sum(sorted_list: list[int], target_sum: int) -> list[int]:
+    list_bad_nums = []
+    for i in range(len(sorted_list)):
+        if sorted_list[i] not in list_bad_nums:
+            
+            if (target_sum - sorted_list[i]) in sorted_list[i:]:                
+                # find index (j) of num (target_sum - sorted_list[i])
+                for index, val in enumerate(sorted_list):
+                    if val == (target_sum - sorted_list[i]):
+                        j = index
+                
+                return i, j
+            
+            else:
+                list_bad_nums += [sorted_list[i]]
+                list_bad_nums += [target_sum - sorted_list[i]]
+        
+    return None, None
 
 
 def main():
@@ -298,10 +323,15 @@ def main():
     # arr_new = find_duplicates_in_arr(my_arr)
     # print(f'arr_new == {arr_new}')
 
-    # my_arr = [0, 1, 0, 3, 12]
-    my_arr = [1,3,0,5,0,0,8]
-    arr_new = move_all_zeros_to_the_end(my_arr)
-    print(f'arr_new == {arr_new}')
+    # # my_arr = [0, 1, 0, 3, 12]
+    # my_arr = [1,3,0,5,0,0,8]
+    # arr_new = move_all_zeros_to_the_end(my_arr)
+    # print(f'arr_new == {arr_new}')
+
+    sorted_list = [5,3,5,2,4,43,6,3,6]
+    num = 13
+    i, j = find_pair_with_target_sum(sorted_list, num)
+    print(f'i, j == {i}, {j}')
     
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
