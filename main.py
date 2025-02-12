@@ -275,22 +275,42 @@ def move_all_zeros_to_the_end(arr):
 # Task: Given a sorted list and a target sum, return the indices of two numbers that add up to the target.
 # Goal: Use two different indices moving in opposite directions.
 def find_pair_with_target_sum(sorted_list: list[int], target_sum: int) -> list[int]:
-    list_bad_nums = []
-    for i in range(len(sorted_list)):
-        if sorted_list[i] not in list_bad_nums:
+    # # 1) 1st way: Bad, ineficient
+    # # Issue 2:
+    # # Inefficient Tracking of "Bad Numbers"
+    # list_bad_nums = []
+    # for i in range(len(sorted_list)):
+    #     if sorted_list[i] not in list_bad_nums:
             
-            if (target_sum - sorted_list[i]) in sorted_list[i:]:                
-                # find index (j) of num (target_sum - sorted_list[i])
-                for index, val in enumerate(sorted_list):
-                    if val == (target_sum - sorted_list[i]):
-                        j = index
+    #         # Issue 1:
+    #         # nefficient Search with Nested Loops → O(n^2) Time Complexity
+    #         if (target_sum - sorted_list[i]) in sorted_list[i:]:                
+    #             # find index (j) of num (target_sum - sorted_list[i])
+    #             for index, val in enumerate(sorted_list):
+    #                 if val == (target_sum - sorted_list[i]):
+    #                     j = index
                 
-                return i, j
+    #             return i, j
             
-            else:
-                list_bad_nums += [sorted_list[i]]
-                list_bad_nums += [target_sum - sorted_list[i]]
+    #         else:
+    #             list_bad_nums += [sorted_list[i]]
+    #             list_bad_nums += [target_sum - sorted_list[i]]
         
+    # return None, None
+
+    # 2) 2nd way
+    # i = 0
+    find_second_num = -1
+    tmp_val = 0
+    for ind, val in enumerate(sorted_list):
+        if (target_sum - val) in sorted_list and tmp_val == 0:
+            i = ind
+            find_second_num = target_sum - val
+            tmp_val += 1
+        elif val == find_second_num:
+            j = ind
+            return i, j
+    
     return None, None
 
 
@@ -328,8 +348,9 @@ def main():
     # arr_new = move_all_zeros_to_the_end(my_arr)
     # print(f'arr_new == {arr_new}')
 
-    sorted_list = [5,3,5,2,4,43,6,3,6]
-    num = 13
+    # sorted_list = [5,3,5,2,4,43,6,3,6]
+    sorted_list = [3,3,6,7,8,11,12,15,15,23]
+    num = 15
     i, j = find_pair_with_target_sum(sorted_list, num)
     print(f'i, j == {i}, {j}')
     
