@@ -361,20 +361,33 @@ def find_max_sum_of_a_subarr_of_sz_k(arr, k):
     #         if sum_current > max_sum:
     #             max_sum = sum_current
     # return max_sum
-    if k > len(arr):
-        return 'number k more then len(arr)'
-    elif k <= 0:
-        return 'number k less/equal then 0'
-    else:
-        sum_current = sum(arr[:k])
-        max_sum = sum_current
+    
+    # if k > len(arr):
+    #     return 'number k more then len(arr)'
+    # elif k <= 0:
+    #     return 'number k less/equal then 0'
+    # else:
+    #     sum_current = sum(arr[:k])
+    #     max_sum = sum_current
 
-        for i in range(k, len(arr)):
-            sum_current += (arr[i] - arr[i - k])
-            if sum_current > max_sum:
-                max_sum = sum_current
+    #     for i in range(k, len(arr)):
+    #         sum_current += (arr[i] - arr[i - k])
+    #         if sum_current > max_sum:
+    #             max_sum = sum_current
 
-        return max_sum
+    #     return max_sum
+
+    if not arr or k <= 0 or k > len(arr):
+        return 0  # Handle edge cases
+
+    sum_current = sum(arr[:k])
+    max_sum = sum_current
+
+    for i in range(k, len(arr)):
+        sum_current += arr[i] - arr[i - k]   # Slide the window
+        max_sum = max(max_sum, sum_current)  # Update max_sum if needed
+
+    return max_sum
 
 
 def main():
