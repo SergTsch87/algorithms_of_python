@@ -390,6 +390,20 @@ def find_max_sum_of_a_subarr_of_sz_k(arr, k):
     return max_sum
 
 
+# 2) 2️⃣ Remove Duplicates from a Sorted Array (In-Place)
+# Task: Given a sorted array, remove duplicates in-place and return the number of unique elements.
+# Goal: Practice two-pointer techniques for modifying arrays without extra space
+def remove_duplcts_from_a_sorted_arr(sorted_arr):
+    set_nums = set()
+    for i in range(len(sorted_arr)):
+        if sorted_arr[i] not in set_nums:
+            set_nums.add(sorted_arr[i])
+        elif sorted_arr[i] in set_nums:
+            set_nums.pop()
+
+    return len(set_nums)
+
+
 def main():
     # my_arr = [2,6,4,3,5,3]
     # sum_items = get_sum_list(my_arr)
@@ -430,12 +444,16 @@ def main():
     # i, j = find_pair_with_target_sum(sorted_list, num)
     # print(f'i, j == {i}, {j}')
 
-    # my_list = [3,3,6,7,8,11,12,15,15,23]
-    my_list = [5,3,5,2,4,43,6,3,6]
-    k = 1
-    sum_max = find_max_sum_of_a_subarr_of_sz_k(my_list, k)
-    print(f'arr = {my_list}\nk = {k}\n')
-    print(f'sum_max == {sum_max}')
+    # # my_list = [3,3,6,7,8,11,12,15,15,23]
+    # my_list = [5,3,5,2,4,43,6,3,6]
+    # k = 1
+    # sum_max = find_max_sum_of_a_subarr_of_sz_k(my_list, k)
+    # print(f'arr = {my_list}\nk = {k}\n')
+    # print(f'sum_max == {sum_max}')
+
+    sorted_arr = [3,3,6,7,8,11,12,15,15,23]
+    count_els = remove_duplcts_from_a_sorted_arr(sorted_arr)
+    print(f'count_els == {count_els}')
     
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
