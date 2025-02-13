@@ -394,14 +394,34 @@ def find_max_sum_of_a_subarr_of_sz_k(arr, k):
 # Task: Given a sorted array, remove duplicates in-place and return the number of unique elements.
 # Goal: Practice two-pointer techniques for modifying arrays without extra space
 def remove_duplcts_from_a_sorted_arr(sorted_arr):
-    set_nums = set()
-    for i in range(len(sorted_arr)):
-        if sorted_arr[i] not in set_nums:
-            set_nums.add(sorted_arr[i])
-        elif sorted_arr[i] in set_nums:
-            set_nums.pop()
+    # set_nums = set()
+    # for i in range(len(sorted_arr)):
+    #     if sorted_arr[i] not in set_nums:
+    #         set_nums.add(sorted_arr[i])
+    #     elif sorted_arr[i] in set_nums:
+    #         set_nums.pop()
 
-    return len(set_nums)
+    # return len(set_nums)
+
+    sorted_arr.sort()
+    count = 0
+    left, right = 0, len(sorted_arr) - 1
+    
+    while left < right:
+        if sorted_arr[left] != sorted_arr[left + 1]:
+            count += 1
+        else:
+            count -= 1
+        left += 1
+        
+        if sorted_arr[right] != sorted_arr[right - 1]:
+            count += 1
+        else:
+            count -= 1
+        right -= 1
+    
+    return count
+        
 
 
 def main():
@@ -453,7 +473,7 @@ def main():
 
     sorted_arr = [3,3,6,7,8,11,12,15,15,23]
     count_els = remove_duplcts_from_a_sorted_arr(sorted_arr)
-    print(f'count_els == {count_els}')
+    print(f'sorted_arr == {sorted_arr}\ncount_els == {count_els}')
     
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
