@@ -274,7 +274,7 @@ def move_all_zeros_to_the_end(arr):
 # 10) Two Pointers Technique: Find Pair with Target Sum
 # Task: Given a sorted list and a target sum, return the indices of two numbers that add up to the target.
 # Goal: Use two different indices moving in opposite directions.
-def find_pair_with_target_sum(sorted_list: list[int], target_sum: int) -> tuple[int, int] | tuple[None, None]:
+def find_pair_with_target_sum(sorted_list: list[int], target_sum: int) -> tuple[int, int] | None:
     # # 1) 1st way: Bad, ineficient
     # # Issue 2:
     # # Inefficient Tracking of "Bad Numbers"
@@ -343,6 +343,28 @@ def find_pair_with_target_sum(sorted_list: list[int], target_sum: int) -> tuple[
     return None  # No valid pair found
 
 
+# Задачі на закріплення попередніх технік
+# 1) Sliding Window: Find Maximum Sum of a Subarray of Size K
+# Task: Given an array and an integer k, find the maximum sum of any contiguous subarray of size k.
+# Goal: Learn the sliding window technique to avoid redundant calculations inside loops.
+def find_max_sum_of_a_subarr_of_sz_k(arr, k):
+    max_sum = 0
+    print(f'arr = {arr}\nk = {k}\n')
+    for i in range(len(arr)):
+        if i < k:
+            print(f'Before assign, inside "if i < k":\nmax_sum = {max_sum}\ni = {i}\narr[i] = {arr[i]}')
+            max_sum += arr[i]
+            print(f'After assign, inside "if i < k":\nmax_sum = {max_sum}')
+        elif i >= k:
+            if arr[i] > arr[i - k]:
+                print(f'Before change max_sum, inside "arr[i] > arr[i - k]":\nmax_sum = {max_sum}\narr[i] = {arr[i]}\ni = {i}\narr[i - k] = {arr[i - k]}')
+                max_sum -= arr[i - k]
+                max_sum += arr[i]
+                print(f'After change max_sum, inside "arr[i] > arr[i - k]":\nmax_sum = {max_sum}\narr[i] = {arr[i]}\ni = {i}\narr[i - k] = {arr[i - k]}')
+    
+    return max_sum
+
+
 def main():
     # my_arr = [2,6,4,3,5,3]
     # sum_items = get_sum_list(my_arr)
@@ -378,10 +400,16 @@ def main():
     # print(f'arr_new == {arr_new}')
 
     # sorted_list = [5,3,5,2,4,43,6,3,6]
-    sorted_list = [3,3,6,7,8,11,12,15,15,23]
-    num = 15
-    i, j = find_pair_with_target_sum(sorted_list, num)
-    print(f'i, j == {i}, {j}')
+    # sorted_list = [3,3,6,7,8,11,12,15,15,23]
+    # num = 15
+    # i, j = find_pair_with_target_sum(sorted_list, num)
+    # print(f'i, j == {i}, {j}')
+
+    # my_list = [3,3,6,7,8,11,12,15,15,23]
+    my_list = [5,3,5,2,4,43,6,3,6]
+    k = 2
+    sum_max = find_max_sum_of_a_subarr_of_sz_k(my_list, k)
+    print(f'sum_max == {sum_max}')
     
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
