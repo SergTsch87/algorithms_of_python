@@ -348,19 +348,33 @@ def find_pair_with_target_sum(sorted_list: list[int], target_sum: int) -> tuple[
 # Task: Given an array and an integer k, find the maximum sum of any contiguous subarray of size k.
 # Goal: Learn the sliding window technique to avoid redundant calculations inside loops.
 def find_max_sum_of_a_subarr_of_sz_k(arr, k):
-    max_sum = 0
-    sum_current = 0
-    for i in range(len(arr)):
-        if i < k - 1:
-            sum_current += arr[i]
-        elif i == k - 1:
-            sum_current += arr[i]
-            max_sum = sum_current
-        elif i >= k:
+    # max_sum = 0
+    # sum_current = 0
+    # for i in range(len(arr)):
+    #     if i < k - 1:
+    #         sum_current += arr[i]
+    #     elif i == k - 1:
+    #         sum_current += arr[i]
+    #         max_sum = sum_current
+    #     elif i >= k:
+    #         sum_current += (arr[i] - arr[i - k])
+    #         if sum_current > max_sum:
+    #             max_sum = sum_current
+    # return max_sum
+    if k > len(arr):
+        return 'number k more then len(arr)'
+    elif k <= 0:
+        return 'number k less/equal then 0'
+    else:
+        sum_current = sum(arr[:k])
+        max_sum = sum_current
+
+        for i in range(k, len(arr)):
             sum_current += (arr[i] - arr[i - k])
             if sum_current > max_sum:
                 max_sum = sum_current
-    return max_sum
+
+        return max_sum
 
 
 def main():
@@ -405,7 +419,7 @@ def main():
 
     # my_list = [3,3,6,7,8,11,12,15,15,23]
     my_list = [5,3,5,2,4,43,6,3,6]
-    k = 3
+    k = 1
     sum_max = find_max_sum_of_a_subarr_of_sz_k(my_list, k)
     print(f'arr = {my_list}\nk = {k}\n')
     print(f'sum_max == {sum_max}')
