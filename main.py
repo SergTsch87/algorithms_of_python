@@ -403,25 +403,36 @@ def remove_duplcts_from_a_sorted_arr(sorted_arr):
 
     # return len(set_nums)
 
-    sorted_arr.sort()
-    count = 0
-    left, right = 0, len(sorted_arr) - 1
+    # sorted_arr.sort()
+    # count = 0
+    # left, right = 0, len(sorted_arr) - 1
     
-    while left < right:
-        if sorted_arr[left] != sorted_arr[left + 1]:
-            count += 1
-        else:
-            count -= 1
-        left += 1
+    # while left < right:
+    #     if sorted_arr[left] != sorted_arr[left + 1]:
+    #         count += 1
+    #     else:
+    #         count -= 1
+    #     left += 1
         
-        if sorted_arr[right] != sorted_arr[right - 1]:
-            count += 1
-        else:
-            count -= 1
-        right -= 1
+    #     if sorted_arr[right] != sorted_arr[right - 1]:
+    #         count += 1
+    #     else:
+    #         count -= 1
+    #     right -= 1
     
-    return count
-        
+    # return count
+
+    if not sorted_arr:
+        return 0  # Handle empty list edge case
+    
+    write_index = 1  # Position to overwrite duplicates
+
+    for read_index in range(1, len(sorted_arr)):
+        if sorted_arr[read_index] != sorted_arr[read_index - 1]:  # Found a new unique element
+            sorted_arr[write_index] = sorted_arr[read_index]      # Overwrite duplicate
+            write_index += 1   # Move write pointer
+    
+    return write_index   # Number of unique elements
 
 
 def main():
