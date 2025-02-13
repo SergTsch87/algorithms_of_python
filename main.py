@@ -349,19 +349,17 @@ def find_pair_with_target_sum(sorted_list: list[int], target_sum: int) -> tuple[
 # Goal: Learn the sliding window technique to avoid redundant calculations inside loops.
 def find_max_sum_of_a_subarr_of_sz_k(arr, k):
     max_sum = 0
-    print(f'arr = {arr}\nk = {k}\n')
+    sum_current = 0
     for i in range(len(arr)):
-        if i < k:
-            print(f'Before assign, inside "if i < k":\nmax_sum = {max_sum}\ni = {i}\narr[i] = {arr[i]}')
-            max_sum += arr[i]
-            print(f'After assign, inside "if i < k":\nmax_sum = {max_sum}')
+        if i < k - 1:
+            sum_current += arr[i]
+        elif i == k - 1:
+            sum_current += arr[i]
+            max_sum = sum_current
         elif i >= k:
-            if arr[i] > arr[i - k]:
-                print(f'Before change max_sum, inside "arr[i] > arr[i - k]":\nmax_sum = {max_sum}\narr[i] = {arr[i]}\ni = {i}\narr[i - k] = {arr[i - k]}')
-                max_sum -= arr[i - k]
-                max_sum += arr[i]
-                print(f'After change max_sum, inside "arr[i] > arr[i - k]":\nmax_sum = {max_sum}\narr[i] = {arr[i]}\ni = {i}\narr[i - k] = {arr[i - k]}')
-    
+            sum_current += (arr[i] - arr[i - k])
+            if sum_current > max_sum:
+                max_sum = sum_current
     return max_sum
 
 
@@ -407,8 +405,9 @@ def main():
 
     # my_list = [3,3,6,7,8,11,12,15,15,23]
     my_list = [5,3,5,2,4,43,6,3,6]
-    k = 2
+    k = 3
     sum_max = find_max_sum_of_a_subarr_of_sz_k(my_list, k)
+    print(f'arr = {my_list}\nk = {k}\n')
     print(f'sum_max == {sum_max}')
     
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
