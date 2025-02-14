@@ -443,7 +443,7 @@ def remove_duplcts_from_a_sorted_arr(sorted_arr):
 # Goal: Learn efficient frequency counting with dictionaries.
 def find_first_non_repeating_element(arr: list[int]) -> int | None:
     if not arr:
-        return arr
+        return None
     
     # for i in range(1, len(arr)):
     #     if (arr[i] != arr[i - 1]) and (arr[i] != arr[i + 1]):
@@ -457,13 +457,14 @@ def find_first_non_repeating_element(arr: list[int]) -> int | None:
     #         freq_count_dict[arr[i]] = 1
 
     freq_count_dict = {}
-    for i in range(len(arr)):
-        if arr[i] in freq_count_dict:
-            freq_count_dict[arr[i]] += 1
-        elif arr[i] not in freq_count_dict:
-            freq_count_dict[arr[i]] = 1
+    for num in arr:  #  More Pythonic way to build frequency dictionary
+        freq_count_dict[num] = freq_count_dict.get(num, 0)
 
-    return None
+    for num in arr:   # Correctly finds the first non-repeating element
+        if freq_count_dict[num] == 1:
+            return num
+    
+    return None   # If all elements repeat, return None
  
 
 def main():
