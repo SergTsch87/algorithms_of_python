@@ -445,9 +445,9 @@ def find_first_non_repeating_element(arr: list[int]) -> int | None:
     if not arr:
         return arr
     
-    for i in range(1, len(arr)):
-        if (arr[i] != arr[i - 1]) and (arr[i] != arr[i + 1]):
-            return arr[i]
+    # for i in range(1, len(arr)):
+    #     if (arr[i] != arr[i - 1]) and (arr[i] != arr[i + 1]):
+    #         return arr[i]
         
     # freq_count_dict = {}
     # for i in range(len(arr)):
@@ -456,8 +456,15 @@ def find_first_non_repeating_element(arr: list[int]) -> int | None:
     #     elif arr[i] not in freq_count_dict:
     #         freq_count_dict[arr[i]] = 1
 
-    return None
+    freq_count_dict = {}
+    for i in range(len(arr)):
+        if arr[i] in freq_count_dict:
+            freq_count_dict[arr[i]] += 1
+        elif arr[i] not in freq_count_dict:
+            freq_count_dict[arr[i]] = 1
 
+    return None
+ 
 
 def main():
     # my_arr = [2,6,4,3,5,3]
