@@ -445,12 +445,16 @@ def find_first_non_repeating_element(arr: list[int]) -> int | None:
     if not arr:
         return arr
     
-    freq_count_dict = {}
-    for i in range(len(arr)):
-        if arr[i] in freq_count_dict:
+    for i in range(1, len(arr)):
+        if (arr[i] != arr[i - 1]) and (arr[i] != arr[i + 1]):
             return arr[i]
-        elif arr[i] not in freq_count_dict:
-            freq_count_dict[i] += 1
+        
+    # freq_count_dict = {}
+    # for i in range(len(arr)):
+    #     if arr[i] in freq_count_dict:
+    #         return arr[i]
+    #     elif arr[i] not in freq_count_dict:
+    #         freq_count_dict[arr[i]] = 1
 
     return None
 
@@ -502,10 +506,15 @@ def main():
     # print(f'arr = {my_list}\nk = {k}\n')
     # print(f'sum_max == {sum_max}')
 
+    # # sorted_arr = [3,3,6,7,8,11,12,15,15,23]
+    # sorted_arr = [1,1,2,3,4,4,5]
+    # count_els = remove_duplcts_from_a_sorted_arr(sorted_arr)
+    # print(f'sorted_arr == {sorted_arr}\ncount_els == {count_els}')
+
     # sorted_arr = [3,3,6,7,8,11,12,15,15,23]
     sorted_arr = [1,1,2,3,4,4,5]
-    count_els = remove_duplcts_from_a_sorted_arr(sorted_arr)
-    print(f'sorted_arr == {sorted_arr}\ncount_els == {count_els}')
+    first_no_repeat_elem = find_first_non_repeating_element(sorted_arr)
+    print(f'sorted_arr == {sorted_arr}\nfirst_no_repeat_elem == {first_no_repeat_elem}')
     
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
