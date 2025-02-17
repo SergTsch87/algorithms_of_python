@@ -467,6 +467,48 @@ def find_first_non_repeating_element(arr: list[int]) -> int | None:
     return None   # If all elements repeat, return None
  
 
+# 4) Find the Longest Consecutive Sequence
+# Task: Given an unsorted list of integers, find the length of the longest consecutive sequence
+# (e.g., [100, 4, 200, 1, 3, 2] → 4 because 1, 2, 3, 4 is the longest sequence).
+# Goal: Learn set-based lookup to solve problems efficiently
+def find_longest_consecutive_sequence(arr: list[int]) -> list[int]:
+    if not arr:
+        return None
+
+    arr.sort()
+
+    len_arr_1 = len(arr) - 1
+    l, r = 0, len_arr_1
+    len_l, len_r, max_len = 0, 0, 0
+    delta_l = arr[1] - arr[0]
+    delta_r = arr[len_arr_1] - arr[len_arr_1 - 1]
+
+    while l < r:
+        if arr[l + 1] - arr[l] == delta_l:
+            # l += 1
+            print(f'l += 1 == {l}')
+        else:
+            len_l = l + 1
+            delta_l = arr[l + 2] - arr[l + 1]
+            if max_len < len_l:
+                max_len = len_l
+        l += 1
+
+        if arr[r] - arr[r - 1] == delta_r:
+            # r -= 1
+            print(f'r -= 1 == {r}')
+        else:
+            len_r = r - 2
+            delta_r = arr[r - 1] - arr[r - 2]
+            if max_len < len_r:
+                max_len = len_r
+        r -= 1
+    
+    # print(f'set(arr) == {set(arr)}')
+    # print(f'arr.sort() == {arr.sort()}')
+    return max_len
+
+
 def main():
     # my_arr = [2,6,4,3,5,3]
     # sum_items = get_sum_list(my_arr)
@@ -519,11 +561,18 @@ def main():
     # count_els = remove_duplcts_from_a_sorted_arr(sorted_arr)
     # print(f'sorted_arr == {sorted_arr}\ncount_els == {count_els}')
 
+    # # sorted_arr = [3,3,6,7,8,11,12,15,15,23]
+    # sorted_arr = [1,1,2,3,4,4,5]
+    # first_no_repeat_elem = find_first_non_repeating_element(sorted_arr)
+    # print(f'sorted_arr == {sorted_arr}\nfirst_no_repeat_elem == {first_no_repeat_elem}')
+
     # sorted_arr = [3,3,6,7,8,11,12,15,15,23]
-    sorted_arr = [1,1,2,3,4,4,5]
-    first_no_repeat_elem = find_first_non_repeating_element(sorted_arr)
-    print(f'sorted_arr == {sorted_arr}\nfirst_no_repeat_elem == {first_no_repeat_elem}')
-    
+    # sorted_arr = [1,1,2,3,4,4,5]
+    sorted_arr = [100, 4, 200, 1, 3, 2]
+    longest_consecutive_sequence = find_longest_consecutive_sequence(sorted_arr)
+    # print(f'sorted_arr == {sorted_arr}')
+    print(f'sorted_arr == {sorted_arr}\nlongest_consecutive_sequence == {longest_consecutive_sequence}')
+
     # # list_unsort = rnd.sample(range(1, 100), rnd.randint(10, 20))
     # list_unsort = [3, 7, 2, 9, 1, 0, 4, 8, 6, 5]
     # len_list = len(list_unsort)
