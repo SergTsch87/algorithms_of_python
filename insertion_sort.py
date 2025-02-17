@@ -28,7 +28,10 @@ def insertion_sort(arr):
 #     return arr
 
 # 3-й спосіб
-
+    if arr[0] > arr[1]:
+        arr[0], arr[1] = arr[1], arr[0]
+    
+    return arr
 
 
 def recursive_insertion_sort(arr, n=None, step=1):

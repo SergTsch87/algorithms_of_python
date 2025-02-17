@@ -23,8 +23,8 @@ def test_sort_two_elements():
     # Now we need logic to sort two elements.
 
 
-# def test_sort_three_elements():
-#     assert insertion_sort([3,2,1]) == [1,2,3]
+def test_sort_three_elements():
+    assert insertion_sort([3,2,1]) == [1,2,3]
 
 
 # # Test case 3: A list that is already sorted should remain the same
