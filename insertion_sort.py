@@ -28,9 +28,14 @@ def insertion_sort(arr):
 #     return arr
 
 # 3-й спосіб
-    if arr[0] > arr[1]:
-        arr[0], arr[1] = arr[1], arr[0]
+    # if arr[0] > arr[1]:
+    #     arr[0], arr[1] = arr[1], arr[0]
     
+    key_sort = arr[0]
+    if key_sort > arr[1]:
+        arr[0], arr[1] = arr[1], key_sort
+    # for num in range(1, len(arr)):
+
     return arr
 
 

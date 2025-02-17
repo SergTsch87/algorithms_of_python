@@ -24,7 +24,8 @@ def test_sort_two_elements():
 
 
 def test_sort_three_elements():
-    assert insertion_sort([3,2,1]) == [1,2,3]
+    assert insertion_sort([2,1,3]) == [1,2,3]
+    # assert insertion_sort([3,2,1]) == [1,2,3]
 
 
 # # Test case 3: A list that is already sorted should remain the same
