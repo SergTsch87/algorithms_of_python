@@ -31,10 +31,21 @@ def insertion_sort(arr):
     # if arr[0] > arr[1]:
     #     arr[0], arr[1] = arr[1], arr[0]
     
-    key_sort = arr[0]
-    if key_sort > arr[1]:
-        arr[0], arr[1] = arr[1], key_sort
+    # key_sort = arr[0]
+    # if key_sort > arr[1]:
+    #     arr[0], arr[1] = arr[1], key_sort
+    
+    key_sort = arr[len(arr) - 1]
     # for num in range(1, len(arr)):
+    #     if key_sort > arr[1]:
+    #         arr[0], arr[1] = arr[1], key_sort
+    print(f'Begin arr == {arr}')
+    for item in range(len(arr) - 1, 0, -1):
+        print(f'item == {item}')
+        if key_sort < arr[item - 1]:
+            arr[item], arr[item - 1] = arr[item - 1], key_sort
+        else:
+            break
 
     return arr
 
@@ -68,7 +79,8 @@ def recursive_insertion_sort(arr, n=None, step=1):
 
 
 def main():
-    arr = [9,5,1,4,3]
+    # arr = [9,5,1,4,3]
+    arr = [2,5,9,4,1]
     # arr_new = recursive_insertion_sort(arr)
     arr_new = insertion_sort(arr)
     print(arr_new)
