@@ -35,17 +35,36 @@ def insertion_sort(arr):
     # if key_sort > arr[1]:
     #     arr[0], arr[1] = arr[1], key_sort
     
-    key_sort = arr[len(arr) - 1]
+    # key_sort = arr[len(arr) - 1]
+
     # for num in range(1, len(arr)):
     #     if key_sort > arr[1]:
     #         arr[0], arr[1] = arr[1], key_sort
-    print(f'Begin arr == {arr}')
-    for item in range(len(arr) - 1, 0, -1):
-        print(f'item == {item}')
-        if key_sort < arr[item - 1]:
-            arr[item], arr[item - 1] = arr[item - 1], key_sort
-        else:
-            break
+
+    # print(f'Begin arr == {arr}')
+    # fix_max_key_ind, key_value = 0, 0 # ???  key_index
+    # for fix_max_key_ind in range(1, len(arr)):
+    #     # for item in range(len(arr) - 1, 0, -1):
+    #     for iter_key_index in range(fix_max_key_ind, 0, -1):
+            
+    #         # print(f'iter_key_index == {fix_max_key_ind},  iter_key_index == {iter_key_index}')
+    #         if arr[fix_max_key_ind] < arr[iter_key_index - 1]:
+    #             arr[iter_key_index], arr[iter_key_index - 1] = arr[iter_key_index - 1], arr[fix_max_key_ind]
+    #         else:
+    #             break
+
+    # key_ind = len(arr) - 1
+    # key_elem = arr[key_ind]
+    
+    for key_ind in range(1, len(arr)):
+        key_elem = arr[key_ind]
+        # for item in range(len(arr) - 2, 0, -1):
+        for item in range(key_ind, 0, -1):
+            if arr[item -1] > key_elem:
+                arr[item - 1], arr[item] = key_elem, arr[item - 1]
+                key_ind = item - 1
+            else:
+                break
 
     return arr
 
