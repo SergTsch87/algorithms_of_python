@@ -12,6 +12,11 @@ def test_single_element():
     assert merge_sort([5]) == [5]
 
 
+def test_sort_two_elements():
+    assert merge_sort([2,1]) == [1,2]
+    # Now we need logic to sort two elements.
+
+
 def main():
     pass
 
