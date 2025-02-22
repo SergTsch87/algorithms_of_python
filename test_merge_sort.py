@@ -7,6 +7,11 @@ def test_empty_list():
     assert merge_sort([]) == []
 
 
+# Test case 2: A single element list should remain unchanged
+def test_single_element():
+    assert merge_sort([5]) == [5]
+
+
 def main():
     pass
 
