@@ -2,6 +2,26 @@ from heapq import merge
 
 
 
+# def merge_sort(arr):
+#     if len(arr) <= 1:
+#         return arr
+    
+#     # Treat each element as a sorted subarray of size 1
+#     queue = [[x] for x in arr]
+
+#     while len(queue) > 1:
+#         new_queue = []
+#         for i in range(0, len(queue) - 1, 2):
+#             new_queue.append(list(merge(queue[i], queue[i + 1])))
+            
+#         if len(queue) % 2 == 1:   # Handle odd-length case
+#             new_queue.append(queue[-1])
+        
+#         queue = new_queue
+
+#     return queue[0] if queue else []
+
+
 def merge_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -10,17 +30,16 @@ def merge_sort(arr):
     queue = [[x] for x in arr]
 
     while len(queue) > 1:
-        new_queue = []
-        for i in range(0, len(queue) - 1, 2):
-            new_queue.append(list(merge(queue[i], queue[i + 1])))
-        
-        if len(queue) % 2 == 1:   # Handle odd-length case
-            new_queue.append(queue[-1])
-        
-        queue = new_queue
+        # Merge in pairs, directly updating the queue
 
-    return queue[0] if queue else []
-  
+        queue = [
+            list(merge(queue[i], queue[i + 1]))
+            for i in range(0, len(queue) - 1, 2)
+        ] + (queue[-1:] if len(queue) % 2 == 1 else [])
+        
+
+    return queue[0]
+
 
 # def merge_sort(arr):
 #     if len(arr) <= 1:
